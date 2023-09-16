@@ -1,4 +1,59 @@
+GET http://localhost:8080/v1/user
+Accept: application/json
+
+###
+
 GET http://localhost:8080/v1/user/1
 Accept: application/json
 
 ###
+
+### Registrar Cliente por MS-CUSTOMER
+POST http://localhost:8080/v1/user/confirm/
+Content-Type: application/json
+
+{
+  "nameUser": "erwinlag",
+  "mail": "e@gmail.com",
+  "password": "123",
+  "rol": "1",
+  "createdAt": "2023-09-05T22:13:41.000+00:00",
+  "updatedAt": "2023-09-05T22:14:02.000+00:00",
+  "person": {
+    "idPerson": 1,
+    "firstName": "dsadsdf",
+    "lastName": "dsfds",
+    "phoneNumber": "1221323",
+    "birthdate": "123",
+    "status": 1,
+    "idSeller": 1
+  },
+  "address": {
+    "idAddress": 1,
+    "description": "dfdfdsdsfgsgdgd"
+  }
+}
+
+
+### Registrar Cliente por MS-CUSTOMER
+POST http://localhost:8080/v1/user/confirm/
+Content-Type: application/json
+
+{
+  "id": 2,
+  "nameUser": "UPD",
+  "mail": "e@gmail.com",
+  "password": "123",
+  "rol": "1",
+  "person": {
+    "firstName": "dsadsdf",
+    "lastName": "dsfds",
+    "phoneNumber": "1221323",
+    "birthdate": "123",
+    "status": 1,
+    "idSeller": 1
+  },
+  "address": {
+    "description": "dfdfdsdsfgsgdgd"
+  }
+}

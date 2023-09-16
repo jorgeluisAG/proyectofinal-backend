@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
+@ToString
 @Table(name = "user")
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -60,5 +62,18 @@ public class User implements Serializable {
     @PreUpdate
     protected void onUpdate() {
         updatedAt = new Date();
+    }
+
+    public User toUser(){
+        User user = new User();
+        user.setNameUser(nameUser);
+        user.setMail(mail);
+        user.setPassword(password);
+        user.setRol(rol);
+        user.setCreatedAt(createdAt);
+        user.setUpdatedAt(updatedAt);
+        user.setPerson(person);
+        user.setAddress(address);
+        return user;
     }
 }
