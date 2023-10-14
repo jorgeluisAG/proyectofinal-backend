@@ -16,7 +16,7 @@ public class RolUser implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer idRolUser;
+    private Integer id;
 
     private String description;
 

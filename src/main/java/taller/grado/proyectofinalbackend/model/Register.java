@@ -21,7 +21,7 @@ public class Register implements Serializable {
     //@GeneratedValue(generator = "uuid2")
     //@GenericGenerator(name = "uuid2", strategy = "uuid2")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer idRegister;
+    private Integer id;
 
 
     @ManyToOne
@@ -37,6 +37,7 @@ public class Register implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updatedAt;
+
 
     @PrePersist
     protected void prePersist() {

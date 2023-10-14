@@ -16,12 +16,8 @@ public class Category implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer idCategory;
+    private Integer id;
 
     private String nameCategory;
-
-    private String description;
-
-    private Integer state;
 
 }

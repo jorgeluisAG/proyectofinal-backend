@@ -1,0 +1,52 @@
+GET http://localhost:8080/v1/product
+Accept: application/json
+
+###
+
+GET http://localhost:8080/v1/product/1
+Accept: application/json
+
+### Registrar Product por MS-CUSTOMER
+POST http://localhost:8080/v1/product/confirm/
+Content-Type: application/json
+
+{
+  "codeProduct": "20",
+  "nameProduct": "riel superior",
+  "price": 100,
+  "stock": 250,
+  "descriptionProduct": "Es una rama del material del aluminio",
+  "imageProduct": "Imagen del material",
+  "state": 1,
+  "productColor": {
+    "colorName": "Bronce"
+  },
+  "category": {
+    "nameCategory": "Perfil de Aluminio"
+  }
+}
+
+
+
+### Registrar Cliente por MS-CUSTOMER
+PUT http://localhost:8080/v1/product/change/
+Content-Type: application/json
+
+{
+  "id": 1,
+  "codeProduct": "20",
+  "nameProduct": "riel superior",
+  "price": 100.0,
+  "stock": 250,
+  "descriptionProduct": "Es una rama del material del aluminio",
+  "imageProduct": "Imagen del material",
+  "state": 1,
+  "productColor": {
+    "id": 1,
+    "colorName": "Bronce"
+  },
+  "category": {
+    "id": 1,
+    "nameCategory": "Perfil de Aluminio"
+  }
+}

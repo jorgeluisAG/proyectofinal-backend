@@ -37,11 +37,18 @@ public class UserController {
     @PostMapping("/confirm/")
     @ResponseStatus(HttpStatus.CREATED)
     public User creatUser(@RequestBody UserRequest userRequest, HttpServletRequest request){
-        log.info("Registrar usuario nuevo", userRequest);
+        //log.info("Registrar usuario nuevo", userRequest);
         User usernew = userService.createUser(userRequest);
-        if (usernew!=null){
+        //if (usernew!=null){
             //this.emailService.sendActivationEmail(user,new String[]{}, new HashMap<>() );
-        }
+        //}
         return usernew;
+    }
+
+    @PutMapping("/change/")
+    public User updateUser(@RequestBody UserRequest userRequest, HttpServletRequest request){
+        log.info("Actualizar datos del usuario ", userRequest);
+        User userup = userService.updateUser(userRequest);
+        return userup;
     }
 }

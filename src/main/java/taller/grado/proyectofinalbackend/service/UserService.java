@@ -9,6 +9,7 @@ import taller.grado.proyectofinalbackend.model.Address;
 import taller.grado.proyectofinalbackend.model.Person;
 import taller.grado.proyectofinalbackend.model.User;
 import taller.grado.proyectofinalbackend.model.dao.UserRequest;
+import taller.grado.proyectofinalbackend.repository.AddressRepository;
 import taller.grado.proyectofinalbackend.repository.PersonRepository;
 import taller.grado.proyectofinalbackend.repository.UserRepository;
 
@@ -22,6 +23,7 @@ public class UserService {
 
     private UserRepository userRepository;
     private PersonRepository personaRepository;
+    private AddressRepository addressRepository;
 
     public User getUser(Integer userId){
         return userRepository.findById(userId).orElse(null);
@@ -30,20 +32,21 @@ public class UserService {
     public User createUser(UserRequest userRequest){
 
         Person persona = personaRepository.save(userRequest.getPerson());
-
+        Address address = addressRepository.save(userRequest.getAddress());
         //Guardar Addres
-        Address address = new Address();
-        address.setIdAddress(1);
-        address.setDescription("");
-        User user = userRepository.findById(userRequest.getId()).get();
-
-        user.setId(userRequest.getId());
-        user.setPerson(persona);
+        //Address address = new Address();
+        //address.setIdAddress(1);
+        //address.setDescription("");
+        // PARA MANTENER LA FECHA DE CREACION
+        //User user = userRepository.findById(userRequest.getId()).get();
+        User user = new User();
+        //user.setId(userRequest.getId());
         user.setNameUser(userRequest.getNameUser());
-        user.setAddress(address);
         user.setPassword(userRequest.getPassword());
-        user.setRol(userRequest.getRol());
+        user.setPerson(persona);
+        user.setAddress(address);
         user.setMail(userRequest.getMail());
+        user.setRol(userRequest.getRol());
         User useraux = userRepository.save(user);
         log.info("DATOS OBTenidossssssssss",useraux);
         return useraux;
@@ -51,5 +54,28 @@ public class UserService {
 
     public List<User> getListUser() {
         return userRepository.findAll();
+    }
+
+    public User updateUser(UserRequest userRequest){
+
+        Person persona = personaRepository.save(userRequest.getPerson());
+        Address address = addressRepository.save(userRequest.getAddress());
+        //Guardar Addres
+        //Address address = new Address();
+        //address.setIdAddress(1);
+        //address.setDescription("");
+        // PARA MANTENER LA FECHA DE CREACION
+        User user = userRepository.findById(userRequest.getId()).get();
+        //User user = new User();
+        user.setId(userRequest.getId());
+        user.setNameUser(userRequest.getNameUser());
+        user.setPassword(userRequest.getPassword());
+        user.setPerson(persona);
+        user.setAddress(address);
+        user.setMail(userRequest.getMail());
+        user.setRol(userRequest.getRol());
+        User useraux = userRepository.save(user);
+        log.info("DATOS OBTenidossssssssss",useraux);
+        return useraux;
     }
 }

@@ -18,7 +18,7 @@ public class WorkCalendar implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer idWorkCalendar;
+    private Integer id;
 
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
@@ -38,4 +38,13 @@ public class WorkCalendar implements Serializable {
     @JsonIgnoreProperties("")
     private User user;
 
+    @PrePersist
+    protected void prePersist() {
+        createdAt = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = new Date();
+    }
 }

@@ -17,7 +17,7 @@ public class Sale implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer idSale;
+    private Integer id;
 
     private Date saleDate;
 
