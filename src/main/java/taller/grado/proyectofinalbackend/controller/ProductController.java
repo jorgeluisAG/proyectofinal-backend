@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import taller.grado.proyectofinalbackend.model.Product;
 import taller.grado.proyectofinalbackend.model.dao.ProductRequest;
+import taller.grado.proyectofinalbackend.model.dto.ProductColorResponse;
 import taller.grado.proyectofinalbackend.service.ProductService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/product")
 public class ProductController {
-    private final Logger log =  LoggerFactory.getLogger(RegisterController.class);
+    private final Logger log =  LoggerFactory.getLogger(ProductController.class);
 
     private final ProductService productService;
 
@@ -26,9 +27,9 @@ public class ProductController {
     }
 
     @GetMapping("{productId}")
-    public Product getProduct(@PathVariable(name = "productId") Integer productId){
-        log.info("Get List productId: {}", productId);
-        return productService.getProduct(productId);
+    public Product getProductById(@PathVariable(name = "productId") Integer productId){
+        log.info("Get List productId: {} " +  productId);
+        return productService.getProductById(productId);
     }
 
     @PostMapping("/confirm/")
@@ -41,6 +42,12 @@ public class ProductController {
     public Product updateProduct(@RequestBody ProductRequest productRequest, HttpServletRequest request){
         Product product = productService.updateProduct(productRequest);
         return product;
+    }
+
+    @GetMapping("/productColor/{productColorId}")
+    public List<ProductColorResponse> getProductColorById(@PathVariable(name = "productColorId") Integer productColorId){
+        log.info("Get List productId: {} " +  productColorId);
+        return productService.getProductColorById(productColorId);
     }
 }
 

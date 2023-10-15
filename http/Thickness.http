@@ -1,0 +1,7 @@
+### Lista de Tadas las pulgadas o el grosor del perfil
+GET http://localhost:8080/v1/thickness
+Accept: application/json
+
+### Muestra una informacion de la pulgada o el grosor que tiene el aluminio
+GET http://localhost:8080/v1/thickness/1
+Accept: application/json

@@ -3,7 +3,12 @@ Accept: application/json
 
 ###
 
-GET http://localhost:8080/v1/product/1
+GET http://localhost:8080/v1/product/3
+Accept: application/json
+
+### GET DEL COLOR DEL PRODUCTO
+
+GET http://localhost:8080/v1/product/productColor/4
 Accept: application/json
 
 ### Registrar Product por MS-CUSTOMER
@@ -11,19 +16,30 @@ POST http://localhost:8080/v1/product/confirm/
 Content-Type: application/json
 
 {
-  "codeProduct": "20",
-  "nameProduct": "riel superior",
-  "price": 100,
-  "stock": 250,
-  "descriptionProduct": "Es una rama del material del aluminio",
+  "nameProduct": "gancho",
+  "seriesProduct": "20",
   "imageProduct": "Imagen del material",
+  "descriptionProduct": "Es una rama del material del aluminio",
+  "stockTotal": 200,
+  "price": 100,
   "state": 1,
-  "productColor": {
-    "colorName": "Bronce"
-  },
-  "category": {
-    "nameCategory": "Perfil de Aluminio"
-  }
+  "categoryId": 1,
+  "alumColorStock": [
+    {
+      "stockColor": 15,
+      "alumColorId": 1
+    },
+    {
+      "stockColor": 60,
+      "alumColorId": 2
+    },
+    {
+      "stockColor": 25,
+      "alumColorId": 3
+    }
+  ],
+  "thicknessId": 1
+
 }
 
 

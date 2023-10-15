@@ -1,0 +1,8 @@
+### Lista de Todos los colores
+GET http://localhost:8080/v1/alumcolors
+Accept: application/json
+
+### Muestra una informacion del color de aluminio
+GET http://localhost:8080/v1/alumcolors/1
+Accept: application/json
+

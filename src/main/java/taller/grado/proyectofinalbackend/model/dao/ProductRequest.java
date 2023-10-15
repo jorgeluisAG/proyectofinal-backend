@@ -1,9 +1,7 @@
 package taller.grado.proyectofinalbackend.model.dao;
 
 import lombok.Data;
-import taller.grado.proyectofinalbackend.model.Category;
-import taller.grado.proyectofinalbackend.model.ProductColor;
-import taller.grado.proyectofinalbackend.model.Thickness;
+import java.util.List;
 
 @Data
 public class ProductRequest {
@@ -15,8 +13,10 @@ public class ProductRequest {
     private Integer stockTotal;
     private Double price;
     private Integer state;
-    private Category category;
-    private ProductColor productColor;
-    private Thickness thickness;
+    private Integer categoryId;
+    private List<AlumColorStockRequest> alumColorStockRequests;
+    private Integer thicknessId;
 
 }
+
+
