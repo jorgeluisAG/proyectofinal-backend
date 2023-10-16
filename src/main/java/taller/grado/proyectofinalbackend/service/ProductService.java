@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import taller.grado.proyectofinalbackend.model.*;
+import taller.grado.proyectofinalbackend.model.dao.AlumColorStockRequest;
 import taller.grado.proyectofinalbackend.model.dao.ProductRequest;
 import taller.grado.proyectofinalbackend.model.dto.ProductColorResponse;
 import taller.grado.proyectofinalbackend.model.dto.ProductResponse;
@@ -13,7 +14,9 @@ import taller.grado.proyectofinalbackend.repository.CategoryRepository;
 import taller.grado.proyectofinalbackend.repository.ProductColorRepository;
 import taller.grado.proyectofinalbackend.repository.ProductRepository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
@@ -33,7 +36,7 @@ public class ProductService {
 
     }
 
-    public Product getProductById(Integer productId){
+    public ProductResponse getProductById(Integer productId){
 
         Product product = productRepository.findById(productId).orElse(null);
         ProductResponse productResponse = new ProductResponse();
@@ -46,11 +49,23 @@ public class ProductService {
         productResponse.setStockTotal(product.getStockTotal());
         productResponse.setPrice(product.getPrice());
         productResponse.setState(product.getState());
+
+
+        List<ProductColor> productColor = productColorRepository.getAllByProductId(product.getId());
+
+        List<AlumColorStockRequest> alumColorStockRequests = new ArrayList<>();
+        for(int i=0;i<productColor.size();i++){
+            AlumColorStockRequest alumColorsRepository = new AlumColorStockRequest();
+            alumColorsRepository.setAlumColorId(productColor.get(i).getAlumColor().getId());
+            alumColorsRepository.setStockColor(productColor.get(i).getStockColor());
+            alumColorStockRequests.add(alumColorsRepository);
+        }
+        productResponse.setAlumColorStockRequests(alumColorStockRequests);
         Category category = categoryRepository.findById(product.getCategory().getId()).orElse(null);
         productResponse.setCategory(category);
         log.info("DATO HECHOS "+productResponse);
         log.info("DATO CAtego "+category.getId());
-        return product;
+        return productResponse;
 
     }
 
@@ -146,8 +161,14 @@ public class ProductService {
     }
 
     public List<ProductColorResponse> getProductColorById(Integer productColorId){
+        List<Object[]> productColors111 = productColorRepository.getProductColorsById(productColorId);
+        log.info("DATOS OBTenidosss yaaa productColors: {} ", productColors111);
+        List<ProductColorResponse> productColors = productColorRepository.getProductColorsById(productColorId)
+                .stream()
+                .map(result -> new ProductColorResponse((Integer) result[0], (String) result[1], (String) result[2], (Integer) result[3]))
+                .collect(Collectors.toList());
 
-        return productColorRepository.getProductColorsById(productColorId);
+        return productColors;
 
     }
 

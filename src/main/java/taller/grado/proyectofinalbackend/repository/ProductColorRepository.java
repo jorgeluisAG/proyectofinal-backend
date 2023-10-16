@@ -10,6 +10,10 @@ import java.util.List;
 
 public interface ProductColorRepository extends JpaRepository<ProductColor, Integer> {
 
-    @Query("SELECT a.hex, a.colorName, c.stockColor FROM ProductColor c, AlumColors a, Product p WHERE a.id = c.alumColor.id AND c.product.id = p.id AND c.product.id=:productColorId")
-    List<ProductColorResponse> getProductColorsById(Integer productColorId);
+    @Query("SELECT c.id, a.hex, a.colorName, c.stockColor FROM ProductColor c, AlumColors a, Product p " +
+            "WHERE a.id = c.alumColor.id and c.product.id = p.id and c.product.id=:productColorId")
+    List<Object[]> getProductColorsById(Integer productColorId);
+
+
+        public List<ProductColor> getAllByProductId(Integer productId);
 }

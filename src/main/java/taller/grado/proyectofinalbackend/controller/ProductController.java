@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import taller.grado.proyectofinalbackend.model.Product;
 import taller.grado.proyectofinalbackend.model.dao.ProductRequest;
 import taller.grado.proyectofinalbackend.model.dto.ProductColorResponse;
+import taller.grado.proyectofinalbackend.model.dto.ProductResponse;
 import taller.grado.proyectofinalbackend.service.ProductService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +28,7 @@ public class ProductController {
     }
 
     @GetMapping("{productId}")
-    public Product getProductById(@PathVariable(name = "productId") Integer productId){
+    public ProductResponse getProductById(@PathVariable(name = "productId") Integer productId){
         log.info("Get List productId: {} " +  productId);
         return productService.getProductById(productId);
     }
@@ -44,9 +45,9 @@ public class ProductController {
         return product;
     }
 
-    @GetMapping("/productColor/{productColorId}")
+    @GetMapping("/color/{productColorId}")
     public List<ProductColorResponse> getProductColorById(@PathVariable(name = "productColorId") Integer productColorId){
-        log.info("Get List productId: {} " +  productColorId);
+        log.info("Get List productColorId: {} " , productColorId);
         return productService.getProductColorById(productColorId);
     }
 }

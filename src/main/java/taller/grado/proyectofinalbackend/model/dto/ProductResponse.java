@@ -1,12 +1,18 @@
 package taller.grado.proyectofinalbackend.model.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import taller.grado.proyectofinalbackend.model.Category;
+import taller.grado.proyectofinalbackend.model.ProductColor;
 import taller.grado.proyectofinalbackend.model.dao.AlumColorStockRequest;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
 public class ProductResponse {
     private Integer id;
     private String nameProduct;
@@ -17,6 +23,13 @@ public class ProductResponse {
     private Double price;
     private Integer state;
     private Category category;
-    //private List<AlumColorStockRequest> alumColorStockRequests;
+//    private List<ProductColor> productColors;
+    private List<AlumColorStockRequest> alumColorStockRequests;
     //private Integer thicknessId;
+
+
+    public ProductResponse() {
+
+    }
+
 }
