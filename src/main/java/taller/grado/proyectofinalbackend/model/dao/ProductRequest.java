@@ -7,16 +7,15 @@ import java.util.List;
 public class ProductRequest {
     private Integer id;
     private String nameProduct;
-    private String seriesProduct;
-    private String imageProduct;
     private String descriptionProduct;
     private Integer stockTotal;
     private Double price;
     private Integer state;
     private Integer categoryId;
+    private List<ProductImagesRequest> productImagesRequests;
+    private List<AluminumSeriesRequest> aluminumSeriesRequests;
     private List<AlumColorStockRequest> alumColorStockRequests;
-    private Integer thicknessId;
-
+    //private List<ThicknessRequest> thicknessRequests;
 }
 
 

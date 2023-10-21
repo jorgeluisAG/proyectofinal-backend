@@ -16,8 +16,8 @@ import java.util.List;
 public class ProductResponse {
     private Integer id;
     private String nameProduct;
-    private String seriesProduct;
-    private String imageProduct;
+//    private String seriesProduct;
+//    private String imageProduct;
     private String descriptionProduct;
     private Integer stockTotal;
     private Double price;

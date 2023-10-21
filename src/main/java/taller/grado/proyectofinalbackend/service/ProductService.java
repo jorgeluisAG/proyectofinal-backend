@@ -9,10 +9,8 @@ import taller.grado.proyectofinalbackend.model.dao.AlumColorStockRequest;
 import taller.grado.proyectofinalbackend.model.dao.ProductRequest;
 import taller.grado.proyectofinalbackend.model.dto.ProductColorResponse;
 import taller.grado.proyectofinalbackend.model.dto.ProductResponse;
-import taller.grado.proyectofinalbackend.repository.AlumColorsRepository;
-import taller.grado.proyectofinalbackend.repository.CategoryRepository;
-import taller.grado.proyectofinalbackend.repository.ProductColorRepository;
-import taller.grado.proyectofinalbackend.repository.ProductRepository;
+import taller.grado.proyectofinalbackend.model.dto.ProductSeriesResponse;
+import taller.grado.proyectofinalbackend.repository.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +25,10 @@ public class ProductService {
     private CategoryRepository categoryRepository;
     private ProductColorRepository productColorRepository;
     private AlumColorsRepository alumColorsRepository;
+    private AluminumSeriesRepository aluminumSeriesRepository;
+    private ProductAlumSeriesRepository productAlumSeriesRepository;
+    private ProductImagesRepository productImagesRepository;
+    private ThicknessRepository thicknessRepository;
 
 
 
@@ -43,8 +45,6 @@ public class ProductService {
 
         productResponse.setId(productId);
         productResponse.setNameProduct(product.getNameProduct());
-        productResponse.setSeriesProduct(product.getSeriesProduct());
-        productResponse.setImageProduct(product.getImageProduct());
         productResponse.setDescriptionProduct(product.getDescriptionProduct());
         productResponse.setStockTotal(product.getStockTotal());
         productResponse.setPrice(product.getPrice());
@@ -54,10 +54,10 @@ public class ProductService {
         List<ProductColor> productColor = productColorRepository.getAllByProductId(product.getId());
 
         List<AlumColorStockRequest> alumColorStockRequests = new ArrayList<>();
-        for(int i=0;i<productColor.size();i++){
+        for (ProductColor color : productColor) {
             AlumColorStockRequest alumColorsRepository = new AlumColorStockRequest();
-            alumColorsRepository.setAlumColorId(productColor.get(i).getAlumColor().getId());
-            alumColorsRepository.setStockColor(productColor.get(i).getStockColor());
+            alumColorsRepository.setAlumColorId(color.getAlumColor().getId());
+            alumColorsRepository.setStockColor(color.getStockColor());
             alumColorStockRequests.add(alumColorsRepository);
         }
         productResponse.setAlumColorStockRequests(alumColorStockRequests);
@@ -77,8 +77,6 @@ public class ProductService {
 
         Product product = new Product();
         product.setNameProduct(productRequest.getNameProduct());
-        product.setSeriesProduct(productRequest.getSeriesProduct());
-        product.setImageProduct(productRequest.getImageProduct());
         product.setDescriptionProduct(productRequest.getDescriptionProduct());
         product.setStockTotal(productRequest.getStockTotal());
         product.setPrice(productRequest.getPrice());
@@ -87,7 +85,7 @@ public class ProductService {
         Category category = categoryRepository.findById(productRequest.getCategoryId()).get();
         product.setCategory(category);
         Product productNew = productRepository.save(product);
-        int j=productNew.getStockTotal();
+        int pst=productNew.getStockTotal();
         //log.info("DATO J "+ j);
         //log.info("DATO ProductNew "+productNew.getStockTotal());
         for(int i=0;i<productRequest.getAlumColorStockRequests().size();i++){
@@ -96,13 +94,29 @@ public class ProductService {
             productColor.setProduct(productNew);
             productColor.setAlumColor(alumColors);
             productColor.setStockColor(productRequest.getAlumColorStockRequests().get(i).getStockColor());
-            j= j+ productRequest.getAlumColorStockRequests().get(i).getStockColor();
+            pst = pst + productRequest.getAlumColorStockRequests().get(i).getStockColor();
             productColorRepository.save(productColor);
         }
         //log.info("DATO J2 "+ j);
-        productNew.setStockTotal(j);
-        productRepository.save(productNew);
 
+
+        for(int j=0;j<productRequest.getAluminumSeriesRequests().size();j++){
+            AluminumSeries aluminumSeries = aluminumSeriesRepository.findById(productRequest.getAluminumSeriesRequests().get(j).getAlumSeriesId()).get();
+            ProductAlumSeries productAlumSeries = new ProductAlumSeries();
+            productAlumSeries.setProduct(productNew);
+            productAlumSeries.setAluminumSeries(aluminumSeries);
+            productAlumSeriesRepository.save(productAlumSeries);
+        }
+
+        for(int k=0;k<productRequest.getProductImagesRequests().size();k++){
+            ProductImages productImages = new ProductImages();
+            productImages.setImageProduct(productRequest.getProductImagesRequests().get(k).getImageProduct());
+            productImages.setProduct(productNew);
+            productImagesRepository.save(productImages);
+        }
+
+        productNew.setStockTotal(pst);
+        productRepository.save(productNew);
         //log.info("DATOS OBTenidossssssssss",productNew);
         return productNew;
     }
@@ -127,7 +141,7 @@ public class ProductService {
         Product product = new Product();
         product.setNameProduct(productRequest.getNameProduct());
         //product.setCodeProduct(productRequest.getCodeProduct());
-        product.setImageProduct(productRequest.getImageProduct());
+        //product.setImageProduct(productRequest.getImageProduct());
         product.setDescriptionProduct(productRequest.getDescriptionProduct());
         //product.setStock(productRequest.getStock());
         product.setPrice(productRequest.getPrice());
@@ -148,7 +162,7 @@ public class ProductService {
         product.setId(productRequest.getId());
         product.setNameProduct(productRequest.getNameProduct());
         //product.setCodeProduct(productRequest.getCodeProduct());
-        product.setImageProduct(productRequest.getImageProduct());
+        //product.setImageProduct(productRequest.getImageProduct());
         product.setDescriptionProduct(productRequest.getDescriptionProduct());
         //product.setStock(productRequest.getStock());
         product.setPrice(productRequest.getPrice());
@@ -160,16 +174,51 @@ public class ProductService {
         return productNew;
     }
 
-    public List<ProductColorResponse> getProductColorById(Integer productColorId){
-        List<Object[]> productColors111 = productColorRepository.getProductColorsById(productColorId);
-        log.info("DATOS OBTenidosss yaaa productColors: {} ", productColors111);
-        List<ProductColorResponse> productColors = productColorRepository.getProductColorsById(productColorId)
+    public List<ProductColorResponse> getProductsColorById(Integer productColorId){
+        List<Object[]> productColorsAll = productColorRepository.getProductsColors(productColorId);
+        log.info("DATOS OBTenidosss yaaa productColors: {} ", productColorsAll);
+        List<ProductColorResponse> productColors = productColorRepository.getProductsColors(productColorId)
                 .stream()
                 .map(result -> new ProductColorResponse((Integer) result[0], (String) result[1], (String) result[2], (Integer) result[3]))
                 .collect(Collectors.toList());
 
         return productColors;
 
+    }
+
+    public List<Category> getProductCategory(Integer productId){
+
+        Product product = productRepository.findById(productId).orElse(null);
+        List<Category> category = categoryRepository.findAll();
+        List<Category> categoryList = new ArrayList<>();
+        for(int i=0;i<category.size();i++){
+            Category category1 = new Category();
+            if(product.getCategory().getId()!=category.get(i).getId()){
+                category1.setId(category.get(i).getId());
+                category1.setNameCategory(category.get(i).getNameCategory());
+                categoryList.add(category1);
+            }
+        }
+        //log.info("DATOS OBTenidosssssssss: {} ",categoryList);
+        return categoryList;
+
+    }
+
+    public List<ProductSeriesResponse> getProductsSeriesById(Integer productSeriesId){
+        List<Object[]> productsSeries = productAlumSeriesRepository.getProductsSeries(productSeriesId);
+        log.info("DATOS OBTenidosss yaaa productColors: {} ", productsSeries);
+        List<ProductSeriesResponse> productsSeriesAll = productAlumSeriesRepository.getProductsSeries(productSeriesId)
+                .stream()
+                .map(result -> new ProductSeriesResponse((Integer) result[0], (String) result[1]))
+                .collect(Collectors.toList());
+
+        return productsSeriesAll;
+
+    }
+
+    public List<ProductImages> getProductsImagesById(Integer productId){
+
+        return productImagesRepository.getAllByProductId(productId);
     }
 
 
