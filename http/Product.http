@@ -3,13 +3,29 @@ Accept: application/json
 
 ###
 
-GET http://localhost:8080/v1/product/7
+GET http://localhost:8080/v1/product/1
 Accept: application/json
 
 ### GET DEL COLOR DEL PRODUCTO
 
-GET http://localhost:8080/v1/product/color/5
+GET http://localhost:8080/v1/product/color/1
 Accept: application/json
+
+### GET DEL SERIES DEL PRODUCTO
+
+GET http://localhost:8080/v1/product/series/1
+Accept: application/json
+
+### GET DEL CATEGORY DEL PRODUCTO
+
+GET http://localhost:8080/v1/product/category/1
+Accept: application/json
+
+### GET DE IMAGENES DEL PRODUCTO
+
+GET http://localhost:8080/v1/product/images/1
+Accept: application/json
+
 
 ### Registrar Product por MS-CUSTOMER
 POST http://localhost:8080/v1/product/confirm/
@@ -17,14 +33,12 @@ Content-Type: application/json
 
 {
   "nameProduct": "gancho",
-  "seriesProduct": "20",
-  "imageProduct": "Imagen del material",
   "descriptionProduct": "Es una rama del material del aluminio",
   "stockTotal": 200,
   "price": 100,
   "state": 1,
   "categoryId": 1,
-  "alumColorStock": [
+  "alumColorStockRequests": [
     {
       "stockColor": 15,
       "alumColorId": 1
@@ -36,6 +50,31 @@ Content-Type: application/json
     {
       "stockColor": 25,
       "alumColorId": 3
+    }
+  ],
+  "aluminumSeriesRequests": [
+    {
+      "alumSeriesId": 1
+    },
+    {
+      "alumSeriesId": 2
+    }
+  ],
+  "productImagesRequests": [
+    {
+      "imageProduct": "Imagen del Mater"
+    },
+    {
+      "imageProduct": "Imagen Otro"
+    },
+    {
+      "imageProduct": "Imagen Prueba"
+    },
+    {
+      "imageProduct": "Imagen Dale"
+    },
+    {
+      "imageProduct": "Imagen otro"
     }
   ],
   "thicknessId": 1
@@ -65,4 +104,80 @@ Content-Type: application/json
     "id": 1,
     "nameCategory": "Perfil de Aluminio"
   }
+}
+
+### Registrar Product por MS-CUSTOMER
+POST http://localhost:8080/v1/product/confirm/1
+Content-Type: application/json
+
+{
+  "nameProduct": "gancho",
+  "seriesProduct": "20",
+  "descriptionProduct": "Es una rama del material del aluminio",
+  "stockTotal": 200,
+  "price": 100,
+  "state": 1,
+  "categoryId": 1,
+  "alumColorStockRequests": [
+    {
+      "stockColor": 15,
+      "alumColorId": 1
+    },
+    {
+      "stockColor": 60,
+      "alumColorId": 2
+    },
+    {
+      "stockColor": 25,
+      "alumColorId": 3
+    }
+  ],
+  "aluminumSeriesRequests": [
+    {
+      "alumSeriesId": 1
+    },
+    {
+      "alumSeriesId": 2
+    }
+  ],
+  "thicknessId": 1
+
+}
+
+### Registrar Product por MS-CUSTOMER
+POST http://localhost:8080/v1/product/confirm/2
+Content-Type: application/json
+
+{
+  "nameProduct": "gancho",
+  "seriesProduct": "20",
+  "descriptionProduct": "Es una rama del material del aluminio",
+  "stockTotal": 200,
+  "price": 100,
+  "state": 1,
+  "categoryId": 1,
+  "alumColorStockRequests": [
+    {
+      "stockColor": 15,
+      "alumColorId": 1
+    },
+    {
+      "stockColor": 60,
+      "alumColorId": 2
+    },
+    {
+      "stockColor": 25,
+      "alumColorId": 3
+    }
+  ],
+  "productImagesRequests": [
+    {
+      "imageProduct": "Imagen del material1"
+    },
+    {
+      "imageProduct": "Imagen del material2"
+    }
+  ],
+  "thicknessId": 1
+
 }

@@ -4,10 +4,13 @@ import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
+import taller.grado.proyectofinalbackend.model.Category;
 import taller.grado.proyectofinalbackend.model.Product;
+import taller.grado.proyectofinalbackend.model.ProductImages;
 import taller.grado.proyectofinalbackend.model.dao.ProductRequest;
 import taller.grado.proyectofinalbackend.model.dto.ProductColorResponse;
 import taller.grado.proyectofinalbackend.model.dto.ProductResponse;
+import taller.grado.proyectofinalbackend.model.dto.ProductSeriesResponse;
 import taller.grado.proyectofinalbackend.service.ProductService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,9 +49,27 @@ public class ProductController {
     }
 
     @GetMapping("/color/{productColorId}")
-    public List<ProductColorResponse> getProductColorById(@PathVariable(name = "productColorId") Integer productColorId){
+    public List<ProductColorResponse> getProductsColorById(@PathVariable(name = "productColorId") Integer productColorId){
         log.info("Get List productColorId: {} " , productColorId);
-        return productService.getProductColorById(productColorId);
+        return productService.getProductsColorById(productColorId);
+    }
+
+    @GetMapping("/category/{productId}")
+    public List<Category> getProductCategoryById(@PathVariable(name = "productId") Integer productId){
+        log.info("Get List productCategoryId: {} ",  productId);
+        return productService.getProductCategory(productId);
+    }
+
+    @GetMapping("/series/{productSeriesId}")
+    public List<ProductSeriesResponse> getProductsSeriesById(@PathVariable(name = "productSeriesId") Integer productSeriesId){
+        log.info("Get List productColorId: {} " , productSeriesId);
+        return productService.getProductsSeriesById(productSeriesId);
+    }
+
+    @GetMapping("/images/{productId}")
+    public List<ProductImages> getProductsImagesById(@PathVariable(name = "productId") Integer productId){
+        log.info("Get List productImagesId: {} " , productId);
+        return productService.getProductsImagesById(productId);
     }
 }
 
