@@ -1,9 +1,10 @@
 GET http://localhost:8080/v1/user
 Accept: application/json
+#Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb3JnZUBnbWFpbC5jb20iLCJhdXRoIjoiVVNFUiIsImV4cCI6MTY5ODYxMzQzMX0.LqxHONbZCZDM1wqacD_RWYM7Ueu808IqMI5tz2vHoRjxSR9FTn87dSxLQ-ItB-T8vRhncKJxiMqidGBJR0GeyA
 
 ###
 
-GET http://localhost:8080/v1/user/3
+GET http://localhost:8080/v1/user/1
 Accept: application/json
 
 ###
@@ -15,7 +16,7 @@ Content-Type: application/json
 {
   "id": 2,
   "nameUser": "erwinlag",
-  "mail": "e@gmail.com",
+  "email": "e@gmail.com",
   "password": "123",
   "rol": "1",
   "person": {
@@ -40,8 +41,8 @@ Content-Type: application/json
 
 {
   "nameUser": "UPD",
-  "mail": "e@gmail.com",
-  "password": "123",
+  "email": "jorge@gmail.com",
+  "password": "12345",
   "rol": "1",
   "person": {
     "firstName": "dsadsdf",

@@ -25,15 +25,26 @@ public class User implements Serializable {
     private Integer id;
 
     @NotNull
+    @Column(unique = true)
     private String nameUser;
 
-    private String mail;
+    @NotNull
+    @Column(unique = true)
+    private String email;
 
 
     private String password;
 
     @NotNull
     private String rol;
+
+    @ManyToOne(optional = false)
+    @javax.validation.constraints.NotNull
+    private Authority authority;
+
+    @NotNull
+    @Column(nullable = false)
+    private boolean activated = false;
 
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
@@ -67,7 +78,7 @@ public class User implements Serializable {
     public User toUser(){
         User user = new User();
         user.setNameUser(nameUser);
-        user.setMail(mail);
+        user.setEmail(email);
         user.setPassword(password);
         user.setRol(rol);
         user.setCreatedAt(createdAt);

@@ -8,7 +8,7 @@ import taller.grado.proyectofinalbackend.model.Person;
 public class UserRequest {
     private Integer id;
     private String nameUser;
-    private String mail;
+    private String email;
     private String password;
     private String rol;
     private Person person;
