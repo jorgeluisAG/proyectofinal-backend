@@ -1,0 +1,8 @@
+POST http://localhost:8080/v1/api/authenticate
+Content-Type: application/json
+
+{
+  "email": "jorge@gmail.com",
+  "password": "12345"
+
+}
