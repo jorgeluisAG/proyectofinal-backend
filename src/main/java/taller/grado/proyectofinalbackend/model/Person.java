@@ -20,16 +20,17 @@ public class Person implements Serializable {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
-
     private String firstName;
 
     private String lastName;
 
     private String documentNumber;
 
+    private String sex;
+
     private String phoneNumber;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthdate;
 
     private Integer status;
