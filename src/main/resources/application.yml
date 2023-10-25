@@ -43,4 +43,9 @@ spring:
       max-file-size: 1MB
       max-request-size: 5MB
 
+application:
+  jwt:
+    base64-secret: YWYwYzMwYTEwYjk4NjBkNWNjMmRiZWZhMTQ5YmNiYmE2N2I4YjBlZWUzZDQxNmE1ZTgyZTI5ZmEzMTllMGI1MDgzNDYxNTFkOWEwNjY0NWRjNzRlNWI0YTg0N2FkYTljYTg4NjI1MzM4NmViMDE3ZDY5ZTkxZTQ1NDhkYzEzODA=
+    token-validity-in-seconds: 604800
+    token-validity-in-seconds-for-remember-me: 2592000
 
