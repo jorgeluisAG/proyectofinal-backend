@@ -55,7 +55,7 @@ public class JWTController {
 
             Optional<User> userEmail = userService.getByEmail(loginVM.getEmail());
             if(!userEmail.isPresent()){
-                userEmail = userService.getByNameUser(loginVM.getEmail());
+                userEmail = userService.getByUserName(loginVM.getEmail());
             }
             userEmail.ifPresent(user -> loginVM.setEmail(user.getEmail()));
             UsernamePasswordAuthenticationToken authenticationToken =

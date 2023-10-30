@@ -21,4 +21,5 @@ public class AlumColors implements Serializable {
 
     private String hex;
 
+
 }

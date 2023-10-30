@@ -19,4 +19,5 @@ public class AluminumSeries implements Serializable {
 
     private String seriesProduct;
 
+
 }

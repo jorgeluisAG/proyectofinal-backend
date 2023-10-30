@@ -23,7 +23,7 @@ public class Sale implements Serializable {
 
     private Double totalPrice;
 
-    private Integer state;
+    private Boolean status;
 
     @ManyToOne
     @JsonIgnoreProperties("")
