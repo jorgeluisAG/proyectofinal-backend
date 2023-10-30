@@ -1,5 +1,7 @@
 package taller.grado.proyectofinalbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sun.istack.Nullable;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,4 +20,11 @@ public class Address implements Serializable {
     private Integer id;
 
     private String description;
+
+    @ManyToOne
+    @JsonIgnoreProperties("")
+    @Nullable
+    private User user;
+
+    private Boolean status;
 }

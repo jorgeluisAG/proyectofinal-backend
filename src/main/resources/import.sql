@@ -3,10 +3,11 @@ INSERT INTO proyecto_final.authorities (id) VALUES ('ADMIN');
 INSERT INTO proyecto_final.authorities (id) VALUES ('PERSONAL');
 
 
-INSERT INTO proyecto_final.person (birthdate, document_number, first_name, last_name, phone_number, status) VALUES ('2023-09-24 16:59:58', '239823 lp', 'asa', 'ddddd', '7143434', 1)
-INSERT INTO proyecto_final.person (birthdate, document_number, first_name, last_name, phone_number, status) VALUES ('2023-10-10 19:34:57', '344343', 'jorge', 'alejo', '4564645', 2)
-INSERT INTO proyecto_final.person (birthdate, document_number, first_name, last_name, phone_number, status) VALUES ('2023-10-10 19:35:27', '566556', 'erwin', 'alejo', '7845985', 3)
-INSERT INTO proyecto_final.person (birthdate, document_number, first_name, last_name, phone_number, status) VALUES ('2023-10-10 19:35:49', '545455', 'majholy', 'alejo', '4545455', 1)
+INSERT INTO proyecto_final.person (birthdate, document_number, first_name, last_name, phone_number, status, sex) VALUES ('2023-09-24', '239823 lp', 'asa', 'ddddd', '7143434', 1, 'mujer')
+INSERT INTO proyecto_final.person (birthdate, document_number, first_name, last_name, phone_number, status, sex) VALUES ('2023-10-10', '344343', 'jorge', 'alejo', '4564645', 2, 'hombre')
+INSERT INTO proyecto_final.person (birthdate, document_number, first_name, last_name, phone_number, status, sex) VALUES ('2023-10-10', '566556', 'erwin', 'alejo', '7845985', 3, 'hombre')
+INSERT INTO proyecto_final.person (birthdate, document_number, first_name, last_name, phone_number, status, sex) VALUES ('2023-10-10', '545455', 'majholy', 'alejo', '4545455', 1, 'mujer')
+INSERT INTO proyecto_final.person (birthdate, document_number, first_name, last_name, phone_number, status, sex) VALUES ('2023-10-25', '544545', 'mariela', 'mamani', '6556555', 1, 'mujer')
 
 INSERT INTO proyecto_final.address (description) VALUES ('nuevo usuario de cliente')
 INSERT INTO proyecto_final.address (description) VALUES ('calle 7')
