@@ -22,7 +22,7 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb3JnZUBnbWFpbC5jb20iLCJhd
 
 ### GET DEL CATEGORY DEL PRODUCTO
 
-GET http://localhost:8080/v1/product/category/1
+GET http://localhost:8080/v1/product/category/different/1
 Accept: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb3JnZUBnbWFpbC5jb20iLCJhdXRoIjoiVVNFUiIsImV4cCI6MTY5ODYxMzQzMX0.LqxHONbZCZDM1wqacD_RWYM7Ueu808IqMI5tz2vHoRjxSR9FTn87dSxLQ-ItB-T8vRhncKJxiMqidGBJR0GeyA
 
@@ -42,7 +42,7 @@ Content-Type: application/json
   "descriptionProduct": "Es una rama del material del aluminio",
   "stockTotal": 200,
   "price": 100,
-  "state": 1,
+  "status": true,
   "categoryId": 1,
   "alumColorStockRequests": [
     {
@@ -101,7 +101,7 @@ Content-Type: application/json
   "stock": 250,
   "descriptionProduct": "Es una rama del material del aluminio",
   "imageProduct": "Imagen del material",
-  "state": 1,
+  "status": true,
   "productColor": {
     "id": 1,
     "colorName": "Bronce"
@@ -122,7 +122,7 @@ Content-Type: application/json
   "descriptionProduct": "Es una rama del material del aluminio",
   "stockTotal": 200,
   "price": 100,
-  "state": 1,
+  "status": true,
   "categoryId": 1,
   "alumColorStockRequests": [
     {
@@ -160,7 +160,7 @@ Content-Type: application/json
   "descriptionProduct": "Es una rama del material del aluminio",
   "stockTotal": 200,
   "price": 100,
-  "state": 1,
+  "status": true,
   "categoryId": 1,
   "alumColorStockRequests": [
     {

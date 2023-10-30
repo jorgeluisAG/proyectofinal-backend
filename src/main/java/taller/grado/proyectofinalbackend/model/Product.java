@@ -27,7 +27,7 @@ public class Product implements Serializable {
 
     private String descriptionProduct;
 
-    private Integer state;
+    private Boolean status;
 
     @ManyToOne
     @JsonIgnoreProperties("")

@@ -54,7 +54,7 @@ public class ProductController {
         return productService.getProductsColorById(productColorId);
     }
 
-    @GetMapping("/category/{productId}")
+    @GetMapping("/category/different/{productId}")
     public List<Category> getProductCategoryById(@PathVariable(name = "productId") Integer productId){
         log.info("Get List productCategoryId: {} ",  productId);
         return productService.getProductCategory(productId);
@@ -70,6 +70,7 @@ public class ProductController {
     public List<ProductImages> getProductsImagesById(@PathVariable(name = "productId") Integer productId){
         log.info("Get List productImagesId: {} " , productId);
         return productService.getProductsImagesById(productId);
+
     }
 }
 

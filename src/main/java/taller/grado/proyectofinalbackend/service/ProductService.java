@@ -48,7 +48,7 @@ public class ProductService {
         productResponse.setDescriptionProduct(product.getDescriptionProduct());
         productResponse.setStockTotal(product.getStockTotal());
         productResponse.setPrice(product.getPrice());
-        productResponse.setState(product.getState());
+        productResponse.setStatus(product.getStatus());
 
 
         List<ProductColor> productColor = productColorRepository.getAllByProductId(product.getId());
@@ -80,7 +80,7 @@ public class ProductService {
         product.setDescriptionProduct(productRequest.getDescriptionProduct());
         product.setStockTotal(productRequest.getStockTotal());
         product.setPrice(productRequest.getPrice());
-        product.setState(productRequest.getState());
+        product.setStatus(true);
 
         Category category = categoryRepository.findById(productRequest.getCategoryId()).get();
         product.setCategory(category);
@@ -145,7 +145,7 @@ public class ProductService {
         product.setDescriptionProduct(productRequest.getDescriptionProduct());
         //product.setStock(productRequest.getStock());
         product.setPrice(productRequest.getPrice());
-        product.setState(productRequest.getState());
+        product.setStatus(productRequest.getStatus());
         //product.setCategory(category);
         //product.setProductColor(productColor);
         Product productNew = productRepository.save(product);
@@ -166,7 +166,7 @@ public class ProductService {
         product.setDescriptionProduct(productRequest.getDescriptionProduct());
         //product.setStock(productRequest.getStock());
         product.setPrice(productRequest.getPrice());
-        product.setState(productRequest.getState());
+        product.setStatus(productRequest.getStatus());
         //product.setCategory(category);
         //product.setProductColor(productColor);
         Product productNew = productRepository.save(product);

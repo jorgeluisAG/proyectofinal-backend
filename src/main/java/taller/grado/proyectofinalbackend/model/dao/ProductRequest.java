@@ -10,7 +10,7 @@ public class ProductRequest {
     private String descriptionProduct;
     private Integer stockTotal;
     private Double price;
-    private Integer state;
+    private Boolean status;
     private Integer categoryId;
     private List<ProductImagesRequest> productImagesRequests;
     private List<AluminumSeriesRequest> aluminumSeriesRequests;
