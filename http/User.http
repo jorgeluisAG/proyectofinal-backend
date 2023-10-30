@@ -4,34 +4,42 @@ Accept: application/json
 
 ###
 
-GET http://localhost:8080/v1/user/1
+GET http://localhost:8080/v1/user/only
+Accept: application/json
+#Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb3JnZUBnbWFpbC5jb20iLCJhdXRoIjoiVVNFUiIsImV4cCI6MTY5ODYxMzQzMX0.LqxHONbZCZDM1wqacD_RWYM7Ueu808IqMI5tz2vHoRjxSR9FTn87dSxLQ-ItB-T8vRhncKJxiMqidGBJR0GeyA
+
+###
+
+GET http://localhost:8080/v1/user/address
 Accept: application/json
 
 ###
 
-### Registrar Cliente por MS-CUSTOMER
+GET http://localhost:8080/v1/user/2
+Accept: application/json
+
+###
+
+### Registrar Cliente por MS-USER
 PUT http://localhost:8080/v1/user/change/
 Content-Type: application/json
 
 {
   "id": 2,
-  "nameUser": "erwinlag",
-  "email": "e@gmail.com",
-  "password": "123",
-  "rol": "1",
+  "userName": "JorgeCambio",
+  "email": "jorgecambio@gmail.com",
   "person": {
-    "idPerson": 1,
-    "firstName": "dsadsdf",
-    "lastName": "dsfds",
-    "documentNumber": "23829 lp",
-    "phoneNumber": "1221323",
-    "birthdate": "123",
-    "status": 1
+    "firstName": "jorgeCambio",
+    "lastName": "Cambio",
+    "documentNumber": "1223829",
+    "sex": "hombre",
+    "phoneNumber": "77774444",
+    "birthdate": "1990-01-03",
+    "status": true
   },
-  "address": {
-    "idAddress": 1,
-    "description": "dAAAAAAAAAAAA"
-  }
+  "addressRequests": [{
+    "description": "Prueba de Guardado"
+  }]
 }
 
 
@@ -40,21 +48,57 @@ POST http://localhost:8080/v1/user/confirm/
 Content-Type: application/json
 
 {
-  "nameUser": "UPD",
-  "email": "jorge@gmail.com",
-  "password": "12345",
+  "userName": "MarioERW",
+  "email": "mario@gmail.com",
+  "password": "112233",
+  "person": {
+    "firstName": "dsadsdf",
+    "lastName": "dsfds",
+    "documentNumber": "23829 lp",
+    "sex": "hombre",
+    "phoneNumber": "1221323",
+    "birthdate": "1992-01-03",
+    "status": true
+  }
+}
+
+### Registrar Cliente por MS-CUSTOMER
+POST http://localhost:8080/v1/user/confirm/
+Content-Type: application/json
+
+{
+  "userName": "erwin",
+  "email": "erwin@gmail.com",
+  "password": "erwin",
   "rol": "1",
   "person": {
     "firstName": "dsadsdf",
     "lastName": "dsfds",
     "documentNumber": "23829 lp",
-    "phoneNumber": "1221323",
-    "birthdate": "1992-01-03",
-    "status": 1
-  },
-  "address": {
-    "description": "dfdfdsdsfgsgdgd"
+    "sex": "hombre",
+    "phoneNumber": "2323232",
+    "birthdate": "1999-01-03",
+    "status": true
   }
 }
 
+### Actualizar una IMAGEN NUEVA
+PUT http://localhost:8080/v1/user/image/update
+Content-Type: application/json
+
+{
+  "id": 15,
+  "imageUser": "asdgrwghareyjraejn6ya5reth"
+}
+
+### Actulizar de un Usuario
+PUT http://localhost:8080/v1/user/password/update
+Content-Type: application/json
+
+{
+  "id": 11,
+  "password": "Alejo123",
+  "newPassword": "luis123",
+  "confirmPassword": "luis123"
+}
 

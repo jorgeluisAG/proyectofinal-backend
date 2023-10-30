@@ -26,7 +26,7 @@ public class User implements Serializable {
 
     @NotNull
     @Column(unique = true)
-    private String nameUser;
+    private String userName;
 
     @NotNull
     @Column(unique = true)
@@ -35,8 +35,7 @@ public class User implements Serializable {
 
     private String password;
 
-    @NotNull
-    private String rol;
+    private Boolean status;
 
     @ManyToOne(optional = false)
     @javax.validation.constraints.NotNull
@@ -44,7 +43,7 @@ public class User implements Serializable {
 
     @NotNull
     @Column(nullable = false)
-    private boolean activated = false;
+    private Boolean activated = false;
 
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
@@ -60,10 +59,9 @@ public class User implements Serializable {
     @JsonIgnoreProperties("")
     private Person person;
 
-    @ManyToOne
-    @JsonIgnoreProperties("")
-    private Address address;
-
+    @Lob
+    @Column(name = "imageUser", columnDefinition ="MEDIUMBLOB")
+    private String imageUser;
 
     @PrePersist
     protected void prePersist() {
@@ -77,14 +75,15 @@ public class User implements Serializable {
 
     public User toUser(){
         User user = new User();
-        user.setNameUser(nameUser);
+        user.setUserName(userName);
         user.setEmail(email);
         user.setPassword(password);
-        user.setRol(rol);
+        user.setStatus(status);
+        user.setActivated(activated);
         user.setCreatedAt(createdAt);
         user.setUpdatedAt(updatedAt);
         user.setPerson(person);
-        user.setAddress(address);
         return user;
     }
+
 }
