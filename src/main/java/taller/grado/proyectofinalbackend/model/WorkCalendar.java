@@ -32,7 +32,7 @@ public class WorkCalendar implements Serializable {
 
     private String descriptionWork;
 
-    private Integer state;
+    private Boolean status;
 
     @ManyToOne
     @JsonIgnoreProperties("")

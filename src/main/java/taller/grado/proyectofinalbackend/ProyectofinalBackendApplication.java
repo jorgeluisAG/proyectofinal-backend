@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.core.env.Environment;
 
+
 @SpringBootApplication
 @ConfigurationPropertiesScan("taller.grado.proyectofinalbackend.config")
 public class ProyectofinalBackendApplication {
