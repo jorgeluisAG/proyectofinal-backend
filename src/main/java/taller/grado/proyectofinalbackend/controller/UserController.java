@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import taller.grado.proyectofinalbackend.model.Address;
+import taller.grado.proyectofinalbackend.model.Product;
 import taller.grado.proyectofinalbackend.model.User;
 import taller.grado.proyectofinalbackend.model.dao.UserRequest;
 import taller.grado.proyectofinalbackend.model.dto.ResetPasswordDTO;
@@ -27,6 +28,12 @@ public class UserController {
     public List<UserRequest> getUserList() {
         log.info("Get List user");
         return userService.getListUser();
+    }
+
+    @GetMapping("/employees")
+    public List<UserRequest> getUserEmployeesList() {
+        log.info("Get List user employees");
+        return userService.getUserEmployeesList();
     }
 
     @GetMapping("/only")
@@ -66,6 +73,22 @@ public class UserController {
         return userup;
     }
 
+    @PutMapping("/change/employee")
+    public User updateUserEmployee(@RequestBody UserRequest userRequest, HttpServletRequest request){
+        log.info("Actualizar datos del usuario ", userRequest);
+        System.out.println(userRequest);
+        User userup = userService.updateUserEmployee(userRequest);
+        return userup;
+    }
+
+    @PutMapping("/change/customer")
+    public User updateUserCustomer(@RequestBody UserRequest userRequest, HttpServletRequest request){
+        log.info("Actualizar datos del usuario ", userRequest);
+        System.out.println(userRequest);
+        User userup = userService.updateUserCustomer(userRequest);
+        return userup;
+    }
+
     @PutMapping("/image/update")
     public User updateImageUser(@RequestBody User user){
         User usernew = userService.updateImageUser(user);
@@ -76,5 +99,10 @@ public class UserController {
     public User updatePasswordUser(@RequestBody ResetPasswordDTO resetPasswordDTO){
         User userPass = userService.updatePasswordUser(resetPasswordDTO);
         return userPass;
+    }
+
+    @DeleteMapping("/deleted/{userId}")
+    public User deleteCustomerById(@PathVariable(name = "userId") Integer userId){
+        return userService.deleteCustomerById(userId);
     }
 }

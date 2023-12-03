@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class AlumColorStockRequest {
-    private Integer alumColorId;
+    private Integer id;
     private Integer stockColor;
 }

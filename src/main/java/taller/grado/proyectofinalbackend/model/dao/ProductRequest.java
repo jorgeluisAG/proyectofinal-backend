@@ -10,11 +10,13 @@ public class ProductRequest {
     private String descriptionProduct;
     private Integer stockTotal;
     private Double price;
+    private String sizeProduct;
     private Boolean status;
     private Integer categoryId;
-    private List<ProductImagesRequest> productImagesRequests;
-    private List<AluminumSeriesRequest> aluminumSeriesRequests;
     private List<AlumColorStockRequest> alumColorStockRequests;
+    private List<AluminumSeriesRequest> aluminumSeriesRequests;
+    private List<ProductImagesRequest> productImagesRequests;
+
     //private List<ThicknessRequest> thicknessRequests;
 }
 

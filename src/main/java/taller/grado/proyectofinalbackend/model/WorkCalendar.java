@@ -1,5 +1,6 @@
 package taller.grado.proyectofinalbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,15 +21,11 @@ public class WorkCalendar implements Serializable {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "created_at")
-    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date createdAt;
+    @JsonFormat(pattern = "YYYY-MM-DD'T'HH:MM:SS")
+    private Date startDate;
 
-    @Column(name = "updated_at")
-    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date updatedAt;
+    @JsonFormat(pattern = "YYYY-MM-DD'T'HH:MM:SS")
+    private Date endDate;
 
     private String descriptionWork;
 
@@ -37,6 +34,14 @@ public class WorkCalendar implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("")
     private User user;
+
+    @Column(name = "created_at")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createdAt;
+
+    @Column(name = "updated_at")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updatedAt;
 
     @PrePersist
     protected void prePersist() {
@@ -47,4 +52,5 @@ public class WorkCalendar implements Serializable {
     protected void onUpdate() {
         updatedAt = new Date();
     }
+
 }

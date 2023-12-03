@@ -21,12 +21,12 @@ public class ProductResponse {
     private String descriptionProduct;
     private Integer stockTotal;
     private Double price;
+    private String sizeProduct;
     private Boolean status;
     private Category category;
-    private List<ProductImagesRequest> productImagesRequests;
-    private List<AluminumSeriesRequest> aluminumSeriesRequests;
-    private List<AlumColorStockRequest> alumColorStockRequests;
-
+    private List<ProductColorResponse> productColorResponses;
+    private List<ProductSeriesResponse> productSeriesResponses;
+    private List<ProductImagesResponse> productImagesResponses;
 
     public ProductResponse() {
 

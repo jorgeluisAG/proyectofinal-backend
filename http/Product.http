@@ -1,16 +1,20 @@
+### LISTA DE TODOS LOS PRODUCTOS Sin Imange
 GET http://localhost:8080/v1/product
 Accept: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb3JnZUBnbWFpbC5jb20iLCJhdXRoIjoiVVNFUiIsImV4cCI6MTY5ODYxMzQzMX0.LqxHONbZCZDM1wqacD_RWYM7Ueu808IqMI5tz2vHoRjxSR9FTn87dSxLQ-ItB-T8vRhncKJxiMqidGBJR0GeyA
 
-###
+### LISTA DE TODOS LOS PRODUCTOS con imagen
+GET http://localhost:8080/v1/product/store
+Accept: application/json
 
+### Lista de un solo Producto
 GET http://localhost:8080/v1/product/1
 Accept: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb3JnZUBnbWFpbC5jb20iLCJhdXRoIjoiVVNFUiIsImV4cCI6MTY5ODYxMzQzMX0.LqxHONbZCZDM1wqacD_RWYM7Ueu808IqMI5tz2vHoRjxSR9FTn87dSxLQ-ItB-T8vRhncKJxiMqidGBJR0GeyA
 
 ### GET DEL COLOR DEL PRODUCTO
 
-GET http://localhost:8080/v1/product/color/1
+GET http://localhost:8080/v1/product/color/8
 Accept: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb3JnZUBnbWFpbC5jb20iLCJhdXRoIjoiVVNFUiIsImV4cCI6MTY5ODYxMzQzMX0.LqxHONbZCZDM1wqacD_RWYM7Ueu808IqMI5tz2vHoRjxSR9FTn87dSxLQ-ItB-T8vRhncKJxiMqidGBJR0GeyA
 
@@ -34,59 +38,71 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb3JnZUBnbWFpbC5jb20iLCJhd
 
 
 ### Registrar Product por MS-CUSTOMER
-POST http://localhost:8080/v1/product/confirm/
+POST http://localhost:8080/v1/product/confirm
 Content-Type: application/json
 
 {
-  "nameProduct": "gancho",
-  "descriptionProduct": "Es una rama del material del aluminio",
-  "stockTotal": 200,
+  "nameProduct": "Jamba",
+  "descriptionProduct": "Sirve baños y cocina para mantener repisas o cajas",
   "price": 100,
+  "sizeProduct": "6 metros",
   "status": true,
   "categoryId": 1,
   "alumColorStockRequests": [
     {
-      "stockColor": 15,
-      "alumColorId": 1
+      "id": 1,
+      "stockColor": 50
     },
     {
-      "stockColor": 60,
-      "alumColorId": 2
-    },
-    {
-      "stockColor": 25,
-      "alumColorId": 3
+      "id": 2,
+      "stockColor": 150
     }
   ],
   "aluminumSeriesRequests": [
     {
-      "alumSeriesId": 1
+      "id": 1
     },
     {
-      "alumSeriesId": 2
+      "id": 2
+    },
+    {
+      "id": 5
     }
   ],
   "productImagesRequests": [
     {
-      "imageProduct": "Imagen del Mater"
-    },
-    {
-      "imageProduct": "Imagen Otro"
-    },
-    {
-      "imageProduct": "Imagen Prueba"
-    },
-    {
-      "imageProduct": "Imagen Dale"
-    },
-    {
-      "imageProduct": "Imagen otro"
+      "imageProduct": "Imagen con datos"
     }
-  ],
-  "thicknessId": 1
-
+  ]
 }
 
+
+### LISTA DE TODOS LAS SERIES DE LOS PRODUCTOS
+GET http://localhost:8080/v1/product/series/all
+Accept: application/json
+
+### LISTA DE TODOS LOS COLOREs DE LOS PRODUCTOS
+GET http://localhost:8080/v1/product/colors/all
+Accept: application/json
+
+### Actualizar Color del Producto y su cantidad
+PUT http://localhost:8080/v1/product/color/add
+Content-Type: application/json
+
+{
+  "id": 8,
+  "colorName": "Natural",
+  "stockColor": 150
+}
+
+### Registrar Cliente por MS-CUSTOMER
+PUT http://localhost:8080/v1/product/image/update
+Content-Type: application/json
+
+{
+  "id": 8,
+  "imageProduct": "haciendo pruebas p2"
+}
 
 
 ### Registrar Cliente por MS-CUSTOMER
@@ -187,3 +203,7 @@ Content-Type: application/json
   "thicknessId": 1
 
 }
+
+### Eliminar un producto
+DELETE http://localhost:8080/v1/product/deleted/4
+Content-Type: application/json

@@ -27,6 +27,8 @@ public class Product implements Serializable {
 
     private String descriptionProduct;
 
+    private String sizeProduct;
+
     private Boolean status;
 
     @ManyToOne

@@ -1,9 +1,19 @@
+### Lista de Todos lo usuarios
 GET http://localhost:8080/v1/user
 Accept: application/json
 #Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb3JnZUBnbWFpbC5jb20iLCJhdXRoIjoiVVNFUiIsImV4cCI6MTY5ODYxMzQzMX0.LqxHONbZCZDM1wqacD_RWYM7Ueu808IqMI5tz2vHoRjxSR9FTn87dSxLQ-ItB-T8vRhncKJxiMqidGBJR0GeyA
 
-###
+### Lista de Todos los Empleados
+GET http://localhost:8080/v1/user/employees
+Accept: application/json
+#Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb3JnZUBnbWFpbC5jb20iLCJhdXRoIjoiVVNFUiIsImV4cCI6MTY5ODYxMzQzMX0.LqxHONbZCZDM1wqacD_RWYM7Ueu808IqMI5tz2vHoRjxSR9FTn87dSxLQ-ItB-T8vRhncKJxiMqidGBJR0GeyA
 
+### Lista de Todos los Empleados
+GET http://localhost:8080/v1/user/customers
+Accept: application/json
+#Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb3JnZUBnbWFpbC5jb20iLCJhdXRoIjoiVVNFUiIsImV4cCI6MTY5ODYxMzQzMX0.LqxHONbZCZDM1wqacD_RWYM7Ueu808IqMI5tz2vHoRjxSR9FTn87dSxLQ-ItB-T8vRhncKJxiMqidGBJR0GeyA
+
+###
 GET http://localhost:8080/v1/user/only
 Accept: application/json
 #Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb3JnZUBnbWFpbC5jb20iLCJhdXRoIjoiVVNFUiIsImV4cCI6MTY5ODYxMzQzMX0.LqxHONbZCZDM1wqacD_RWYM7Ueu808IqMI5tz2vHoRjxSR9FTn87dSxLQ-ItB-T8vRhncKJxiMqidGBJR0GeyA
@@ -15,19 +25,22 @@ Accept: application/json
 
 ###
 
-GET http://localhost:8080/v1/user/2
+GET http://localhost:8080/v1/user/1
 Accept: application/json
 
 ###
 
 ### Registrar Cliente por MS-USER
-PUT http://localhost:8080/v1/user/change/
+PUT http://localhost:8080/v1/user/change/employee
 Content-Type: application/json
 
 {
   "id": 2,
   "userName": "JorgeCambio",
   "email": "jorgecambio@gmail.com",
+  "authority": {
+    "id": "USER"
+  },
   "person": {
     "firstName": "jorgeCambio",
     "lastName": "Cambio",
@@ -37,25 +50,27 @@ Content-Type: application/json
     "birthdate": "1990-01-03",
     "status": true
   },
-  "addressRequests": [{
-    "description": "Prueba de Guardado"
-  }]
+  "addressRequests": [
+    {
+      "description": "Prueba de Guardado"
+    }
+  ]
 }
 
 
-### Registrar Cliente por MS-CUSTOMER
+### Registrar un nuevo USUARIO
 POST http://localhost:8080/v1/user/confirm/
 Content-Type: application/json
 
 {
-  "userName": "MarioERW",
-  "email": "mario@gmail.com",
-  "password": "112233",
+  "userName": "maria123",
+  "email": "maria123@gmail.com",
+  "password": "maria123",
   "person": {
-    "firstName": "dsadsdf",
-    "lastName": "dsfds",
+    "firstName": "maria",
+    "lastName": "mamani",
     "documentNumber": "23829 lp",
-    "sex": "hombre",
+    "sex": "mujer",
     "phoneNumber": "1221323",
     "birthdate": "1992-01-03",
     "status": true
@@ -102,3 +117,36 @@ Content-Type: application/json
   "confirmPassword": "luis123"
 }
 
+
+### Eliminar un cliente
+DELETE http://localhost:8080/v1/user/deleted/2
+Content-Type: application/json
+
+
+
+### Registrar Cliente por MS-USER
+PUT http://localhost:8080/v1/user/change/customer
+Content-Type: application/json
+
+{
+  "id": 2,
+  "userName": "JorgeCambio",
+  "email": "jorgecambio@gmail.com",
+  "authority": {
+    "id": "USER"
+  },
+  "person": {
+    "firstName": "jorgeCambio2",
+    "lastName": "Cambio2",
+    "documentNumber": "1223829",
+    "sex": "hombre",
+    "phoneNumber": "77774444",
+    "birthdate": "1990-01-03",
+    "status": true
+  },
+  "addressRequests": [
+    {
+      "description": "Prueba de Guardado"
+    }
+  ]
+}

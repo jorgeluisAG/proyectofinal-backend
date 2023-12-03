@@ -1,0 +1,16 @@
+
+
+### Registrar un Calendario de Trabajo
+POST http://localhost:8080/v1/calendar/confirm/
+Content-Type: application/json
+
+{
+  "id": "2",
+  "start": "2023-11-03T00:00:00",
+  "end": "2023-11-07T00:00:00",
+  "title": "Debes empaquetar los aluminios GG"
+}
+
+### Lista de un Usuario de los Mensajes de Trabajo
+GET http://localhost:8080/v1/calendar/list/1
+Accept: application/json
