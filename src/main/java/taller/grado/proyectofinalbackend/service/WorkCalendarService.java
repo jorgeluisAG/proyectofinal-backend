@@ -1,6 +1,9 @@
 package taller.grado.proyectofinalbackend.service;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,6 +55,7 @@ public class WorkCalendarService {
 //            e.printStackTrace();
 //            System.out.println("NOOOO   ENTROOOO");
 //        }
+        sendMessage(user.getPerson().getPhoneNumber(),workCalendar.getDescriptionWork());
         workCalendarRepository.save(workCalendar);
         return workCalendar;
     }
@@ -75,5 +79,33 @@ public class WorkCalendarService {
             }
         }
         return workCalendarRequests;
+    }
+
+    public static void sendMessage(String employeesNumber,String employeesMessage){
+
+        String ACCOUNT_SID = "AC4789b1b961be1700024eb618b6482251";
+        String AUTH_TOKEN = "8d2a68b5914d652b0adfba6e80947f1e";
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+        Message message = Message.creator(
+                new PhoneNumber("whatsapp:+591"+employeesNumber),
+                new PhoneNumber("whatsapp:+14155238886"),
+                employeesMessage)
+                .create();
+
+        System.out.println(message.getSid());
+        System.out.println("DATOOOO NUMEROOOO " + employeesNumber);
+        System.out.println("MENSAJEEEE  " + employeesMessage);
+    }
+
+    public List<WorkCalendar> getWorkCalendarList() {
+        List<WorkCalendar> workCalendars = workCalendarRepository.findAllByStatusIsTrue();
+
+        for (int i =0;i<workCalendars.size(); i++){
+            User user = workCalendars.get(i).getUser();
+            System.out.println("Listaaaaaaaaa "+ user.getUserName());
+            user.setImageUser(null);
+            workCalendars.get(i).setUser(user);
+        }
+        return workCalendars;
     }
 }

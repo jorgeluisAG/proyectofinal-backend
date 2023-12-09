@@ -11,6 +11,10 @@ Content-Type: application/json
   "title": "Debes empaquetar los aluminios GG"
 }
 
+### Lista de todos los trabajos asignados
+GET http://localhost:8080/v1/calendar/list/all
+Accept: application/json
+
 ### Lista de un Usuario de los Mensajes de Trabajo
 GET http://localhost:8080/v1/calendar/list/1
 Accept: application/json

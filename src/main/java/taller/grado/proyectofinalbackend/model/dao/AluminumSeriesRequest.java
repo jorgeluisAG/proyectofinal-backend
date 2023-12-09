@@ -5,4 +5,5 @@ import lombok.Data;
 @Data
 public class AluminumSeriesRequest {
     private Integer id;
+    private String seriesProduct;
 }

@@ -38,6 +38,11 @@ public class WorkCalendarController {
         return workCalendarService.getListUserWorkCalendarById(userId);
     }
 
+    @GetMapping("/list/all")
+    public List<WorkCalendar> getWorkCalendarList() {
+        log.info("Get List work calendar");
+        return workCalendarService.getWorkCalendarList();
+    }
 //    @GetMapping("/{userId}")
 //    public WorkCalendarRequest getWorkCalendarById(@PathVariable(name = "userId") Integer userId) {
 //        log.info("Get List userId: {}", userId);
