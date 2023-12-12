@@ -105,4 +105,19 @@ public class UserController {
     public User deleteCustomerById(@PathVariable(name = "userId") Integer userId){
         return userService.deleteCustomerById(userId);
     }
+
+    @PutMapping("/authority/personal/{userId}")
+    public User updateAuthorityUser(@PathVariable(name = "userId") Integer userId){
+        return userService.updateAuthorityUser(userId);
+    }
+
+    @PutMapping("/authority/admin/{userId}")
+    public User updateAuthorityUserAdmin(@PathVariable(name = "userId") Integer userId){
+        return userService.updateAuthorityUserAdmin(userId);
+    }
+
+    @PutMapping("/authority/cliente/{userId}")
+    public User updateAuthorityUserCustomer(@PathVariable(name = "userId") Integer userId){
+        return userService.updateAuthorityUserCustomer(userId);
+    }
 }

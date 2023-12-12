@@ -114,6 +114,7 @@ Content-Type: application/json
   "codeProduct": "20",
   "nameProduct": "riel superior",
   "price": 100.0,
+  "stockTotal": 0,
   "stock": 250,
   "descriptionProduct": "Es una rama del material del aluminio",
   "imageProduct": "Imagen del material",

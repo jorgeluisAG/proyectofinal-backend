@@ -95,6 +95,7 @@ public class ProductService {
         productResponse.setDescriptionProduct(product.getDescriptionProduct());
         productResponse.setStockTotal(product.getStockTotal());
         productResponse.setPrice(product.getPrice());
+        productResponse.setSizeProduct(product.getSizeProduct());
         productResponse.setStatus(product.getStatus());
 
         Category category = categoryRepository.findById(product.getCategory().getId()).orElse(null);
@@ -139,7 +140,7 @@ public class ProductService {
         product.setNameProduct(productRequest.getNameProduct());
         product.setDescriptionProduct(productRequest.getDescriptionProduct());
         //product.setStockTotal(productRequest.getStockTotal());
-        product.setStockTotal(0);
+        product.setStockTotal(productRequest.getStockTotal());
         product.setSizeProduct(productRequest.getSizeProduct());
         product.setPrice(productRequest.getPrice());
         product.setStatus(true);

@@ -18,3 +18,7 @@ Accept: application/json
 ### Lista de un Usuario de los Mensajes de Trabajo
 GET http://localhost:8080/v1/calendar/list/1
 Accept: application/json
+
+### Eliminar un tarea de Trabajo
+DELETE http://localhost:8080/v1/calendar/deleted/work/2
+Content-Type: application/json

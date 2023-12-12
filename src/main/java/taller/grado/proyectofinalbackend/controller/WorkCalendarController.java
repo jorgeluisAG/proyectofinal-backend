@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import taller.grado.proyectofinalbackend.model.Product;
 import taller.grado.proyectofinalbackend.model.WorkCalendar;
 
 import taller.grado.proyectofinalbackend.model.dao.UserRequest;
@@ -43,6 +44,12 @@ public class WorkCalendarController {
         log.info("Get List work calendar");
         return workCalendarService.getWorkCalendarList();
     }
+
+    @DeleteMapping("/deleted/work/{assignmentId}")
+    public WorkCalendar deleteWorkCalendarById(@PathVariable(name = "assignmentId") Integer assignmentId){
+        return workCalendarService.deleteWorkCalendarById(assignmentId);
+    }
+
 //    @GetMapping("/{userId}")
 //    public WorkCalendarRequest getWorkCalendarById(@PathVariable(name = "userId") Integer userId) {
 //        log.info("Get List userId: {}", userId);

@@ -62,7 +62,7 @@ public class WorkCalendarService {
 
 
     public List<WorkCalendarRequest> getListUserWorkCalendarById(Integer userId) {
-        List<WorkCalendar> workCalendar = workCalendarRepository.findAll();
+        List<WorkCalendar> workCalendar = workCalendarRepository.findAllByStatusIsTrue();
         List<WorkCalendarRequest> workCalendarRequests = new ArrayList<>();
         for (int i=0;i<workCalendar.size();i++){
             WorkCalendarRequest workCalendarRequest = new WorkCalendarRequest();
@@ -83,8 +83,9 @@ public class WorkCalendarService {
 
     public static void sendMessage(String employeesNumber,String employeesMessage){
 
+        System.out.println("NUMERO DE CELULAR DALEEEEEEEE   "+employeesNumber);
         String ACCOUNT_SID = "AC4789b1b961be1700024eb618b6482251";
-        String AUTH_TOKEN = "8d2a68b5914d652b0adfba6e80947f1e";
+        String AUTH_TOKEN = "71d99fad56570e6670f6e620872c5a74";
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         Message message = Message.creator(
                 new PhoneNumber("whatsapp:+591"+employeesNumber),
@@ -107,5 +108,11 @@ public class WorkCalendarService {
             workCalendars.get(i).setUser(user);
         }
         return workCalendars;
+    }
+
+    public WorkCalendar deleteWorkCalendarById(Integer assignmentId) {
+        WorkCalendar workCalendar = workCalendarRepository.findById(assignmentId).orElse(null);
+        workCalendar.setStatus(false);
+        return workCalendarRepository.save(workCalendar);
     }
 }

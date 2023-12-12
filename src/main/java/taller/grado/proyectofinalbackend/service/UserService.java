@@ -335,5 +335,27 @@ public class UserService {
     }
 
 
+    public User updateAuthorityUser(Integer userId) {
+        User user = userRepository.findById(userId).orElse(null);
+        Authority authority = new Authority();
+        authority.setId("PERSONAL");
+        user.setAuthority(authority);
+        return userRepository.save(user);
+    }
 
+    public User updateAuthorityUserAdmin(Integer userId) {
+        User user = userRepository.findById(userId).orElse(null);
+        Authority authority = new Authority();
+        authority.setId("ADMIN");
+        user.setAuthority(authority);
+        return userRepository.save(user);
+    }
+
+    public User updateAuthorityUserCustomer(Integer userId) {
+        User user = userRepository.findById(userId).orElse(null);
+        Authority authority = new Authority();
+        authority.setId("USER");
+        user.setAuthority(authority);
+        return userRepository.save(user);
+    }
 }

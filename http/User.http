@@ -28,7 +28,17 @@ Accept: application/json
 GET http://localhost:8080/v1/user/1
 Accept: application/json
 
-###
+### Actualizar una Rol Empleado
+PUT http://localhost:8080/v1/user/authority/personal/1
+Content-Type: application/json
+
+### Actualizar una Rol Administrador
+PUT http://localhost:8080/v1/user/authority/admin/1
+Content-Type: application/json
+
+### Actualizar una Rol Cliente
+PUT http://localhost:8080/v1/user/authority/cliente/1
+Content-Type: application/json
 
 ### Registrar Cliente por MS-USER
 PUT http://localhost:8080/v1/user/change/employee
