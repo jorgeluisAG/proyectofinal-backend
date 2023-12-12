@@ -85,7 +85,7 @@ public class WorkCalendarService {
 
         System.out.println("NUMERO DE CELULAR DALEEEEEEEE   "+employeesNumber);
         String ACCOUNT_SID = "AC4789b1b961be1700024eb618b6482251";
-        String AUTH_TOKEN = "71d99fad56570e6670f6e620872c5a74";
+        String AUTH_TOKEN = "aabf76e0ad0db0661d549e65022a7df8";
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         Message message = Message.creator(
                 new PhoneNumber("whatsapp:+591"+employeesNumber),
